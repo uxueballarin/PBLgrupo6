@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "libreriaclases"
 version = "0.0.1"
 authors = [
-    { name="PBL grupo 6", email="lucia.royo@alumni.mondragon.edu" },
+    { name="uxueballarin", email="uxue.ballarin@alumni.mondragon.edu" },
 ]
 description = "Libreria preproceso"
 readme = "README.md"
@@ -19,5 +19,5 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/luroyo/POBgrupo6"
-"Bug Tracker" = "https://github.com/luroyo/POBgrupo6/issues"
+"Homepage" = "https://github.com/uxueballarin/PBLgrupo6"
+"Bug Tracker" = "https://github.com/uxueballarin/PBLgrupo6/issues"
