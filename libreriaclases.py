@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.stats import kstest
 import sys
 import time
-
+from IPython.display import display
 
 class DataAnalisis():
     def __init__(self, ruta):
@@ -24,8 +24,11 @@ class DataAnalisis():
         print('   - CSV: usa la función Variable.csv()')
         print('   - Excel: usa la función Variable.excel()\n')
         time.sleep(2)
-        print('3. Inicia la limpieza del dataset usando el método Variable.analisis()\n')
+        print('3. Inicia la limpieza del dataset usando el método Variable.analizar()\n')
         time.sleep(1)
+        print('4. Para visualizar el dataframe usa la funcion Variable.visualizar()\n')
+        time.sleep(1)
+        print('5. Para guardar el dataframe usa Variable.guardar()')
     def limpieza(self):
         for i in self.borrar:
             self.dataset.drop(i,inplace=True, axis=1)
@@ -62,15 +65,15 @@ class DataAnalisis():
                 stat, p_value = kstest(self.dataset[i], 'norm', args=(self.dataset[i].mean(), self.dataset[i].std())) 
                 if p_value > self.var2: 
                     if np.abs(self.dataset[i].skew())>1:
-                        print(f'\nLa columna {i} es numérica y tine una distribución sesgada y un porcentaje de datos' 
+                        print(f'\nLa columna {i} es numérica y tiene una distribución sesgada y un porcentaje de datos ' 
                         f'vacíos del {porcentaje}%. ¿Qué te gustaría hacer con ella?\n')
                         
                     else:
-                        print(f'\nLa columna {i} es numérica y tine una distribución normal y un porcentaje de datos' 
+                        print(f'\nLa columna {i} es numérica y tiene una distribución normal y un porcentaje de datos ' 
                         f'vacíos del {porcentaje}%. ¿Qué te gustaría hacer con ella?\n')
                     
                 else:
-                    print(f'\nLa columna {i} es numérica y tine no distribución normal ni sesgada, tiene un porcentaje de datos' 
+                    print(f'\nLa columna {i} es numérica y no tiene distribución normal ni sesgada, tiene un porcentaje de datos ' 
                             f'vacíos del {porcentaje}%. ¿Qué te gustaría hacer con ella?\n')
                 respuesta=input('0:Borrarla\n1:Moda\n2:Mediana\n3:Media\n4:Rellenarlo con los de alrededor\n' )
                 if int(respuesta)not in [0,1,2,3,4]:
@@ -166,7 +169,20 @@ class DataAnalisis():
             self.personalizado()
         else:
             print('ERROR: respuesta incorrecta\n\n')
-    
+    def visualizar(self):
+        if isinstance(self.dataset, pd.DataFrame):
+            display(self.dataset)
+        else:
+            print('No se ha cargado el dataset')
+    def guardar(self):
+        try:
+            self.dataset.to_csv('corregido_'+self.ruta.split('\\')[-1])
+            print('Se ha guardado correctamente.')
+        except Exception as e:
+            print('Ha habido un error: %s',e)
+
+
+
     
 
    
