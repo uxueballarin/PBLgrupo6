@@ -5,7 +5,7 @@ import sys
 import time
 from IPython.display import display
 
-class DataAnalisis():
+class DataAnalysis():
     def __init__(self, ruta):
         self.ruta = ruta
         self.media = []
@@ -20,7 +20,7 @@ class DataAnalisis():
         print('This are the steps to be followed to do the datasets cleaning\n\n')
         # print('Estos son tus pasos a seguir para hacer tu limpieza de dataset:\n\n')
         time.sleep(1)
-        print('1.Introduce the route in the class --> ex: Variable = library.DataAnalisis(route)\n\n')
+        print('1.Introduce the route in the class --> ex: Variable = library.DataAnalysis(route)\n\n')
         # print('1. Introduce tu ruta en la clase. --> ex:  Variable = libreria.DataAnalisis(ruta)\n\n')
         print('2. Write your data with pandas')
         # print('2. Lee tus datos con pandas')
@@ -39,17 +39,17 @@ class DataAnalisis():
         # print('5. Para guardar el dataframe usa Variable.guardar()')
     def limpieza(self):
         for i in self.borrar:
-            self.dataset.drop(i,inplace=True, axis=1)
+            self.dataset.drop(columns = [i],inplace=True, axis=1)
         for i in self.media:
-            self.dataset[i].fillna(self.dataset[i].mean(), inplace=True)
+            self.dataset.fillna({i:self.dataset[i].mean()}, inplace=True)
         for i in self.moda:
-            self.dataset[i].fillna(self.dataset[i].mode().iloc[0], inplace=True)
+            self.dataset.fillna({i:self.dataset[i].mode().iloc[0]}, inplace=True)
         for i in self.mediana:
-            self.dataset[i].fillna(self.dataset[i].median(), inplace=True)
+            self.dataset.fillna({i:self.dataset[i].median()}, inplace=True)
         for i in self.bfil:
-            self.dataset[i].fillna(self.dataset[i].bfill(), inplace=True)
-            self.dataset[i].fillna(self.dataset[i].ffill(), inplace=True)
-            self.dataset[i].fillna(self.dataset[i].mode().iloc[0], inplace=True)
+            self.dataset.fillna({i:self.dataset[i].bfill()}, inplace=True)
+            self.dataset.fillna({i:self.dataset[i].ffill()}, inplace=True)
+            self.dataset.fillna({i:self.dataset[i].mode().iloc[0]}, inplace=True)
         # print('La limpieza se ha realizado correctamente\n\n')  
         print('The cleaning has been done correctly.\n\n')  
     def excel(self):
@@ -148,17 +148,18 @@ class DataAnalisis():
             print('Unexpected error.')
             # print("Error inesperado")
             sys.exit()
-            
-    def analyse(self):
+    def analyze(self):
         try:
-            with open('valores.txt', 'r') as file:
+            with open('values.txt', 'r') as file:
                 for linea in file:
-                    palabras = linea.split(',')
-                    try:
-                        self.var1=float(palabras[0])
-                        self.var1=float(palabras[1])
-                    except ValueError:
-                        pass
+                    palabras = linea.strip().split(',')
+                    if len(palabras)>=2:
+                        try:
+                            self.var1=float(palabras[0])
+                            self.var2=float(palabras[1])
+                            break
+                        except ValueError:
+                            pass
         except FileNotFoundError:
             pass
         self.dataset=pd.DataFrame(self.dataset)

@@ -1,41 +1,41 @@
-HEAD
 # PBLgrupo6
-# Libreria preproceso PBL grupo 6
+# Preprocessing library PBL group 6
 
-### Prerequisitos
+### Prerequisites
 
-Se requiere las siguientes librerias:
+For this code, the following libreries are required:
  - numpy
  - pandas
  - scipy
  - sys
  - time
 
-### Como usar
 
-Estos son tus pasos a seguir para hacer tu limpieza de dataset:
 
-1. Introduce tu ruta en la clase. --> ex:  Variable = libreria.DataAnalisis(ruta).
-2. Lee tus datos con pandas:
-- CSV: usa la función Variable.csv().
-- Excel: usa la función Variable.excel().
-3. Inicia la limpieza del dataset usando el método Variable.analisis().
+### How to use
+These are the steps you need to follow to clean your dataset:
+1. Introduce your path in the class. --> ex:  Variable = libreria.DataAnalysis(path).
+2. Read your data with pandas:
+- CSV: use the function Variable.csv().
+- Excel: usa the function Variable.excel().
+3. Start cleaning your dataset using Variable.analyse().
+4. Visualize the dataframe using the function Variable.visualize()
+5. Save the dataframe using Variable.save()
 
-Si quieres ver esta información mientras ejecutas usa la función Varable.info().
+If you want to see this information while running the code, use the function Variable.info()
 
-Extra: se pueden cambiar los siguientes criterios de anlalisis;
+Extra:
+These analysis criteria can be changed:
+- variable 1 = Percentage of empty data to recommend deleting the column (0.3 by default) 
+- variable 2 = Normal distribution displacement to assume skewed distribution (0.05 by default)
+To do so, create a file named 'values.txt' with the values separated with commas and without any space. Example: '0.3,0.05'
 
-- variable 1 = Porcentaje de datos vacios para recomendar borrar columna (0.3 por defecto).
-- variable 2 = Desplazamiento de la distribución normal para asumir distribución sesgada (0.05 por defecto).
-Para ello crear un fichero 'valores.txt' con los valores separados con comas. Ejemplo: '0.3,0.05'
-
-## Ejemplo de código:
+## Code example:
 
 import libreriaclases as lb
 
-Data1=lb.DataAnalisis('ejemplo.csv')
+Data1=lb.DataAnalysis('example.csv')
 
 Data1.csv()
 
-Data1.analizar()
-231ae43 (Primer commit)
+Data1.analyse()
