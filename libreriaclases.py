@@ -20,7 +20,7 @@ class DataAnalysis():
         print('This are the steps to be followed to do the datasets cleaning\n\n')
         # print('Estos son tus pasos a seguir para hacer tu limpieza de dataset:\n\n')
         time.sleep(1)
-        print('1.Introduce the route in the class --> ex: Variable = library.DataAnalysis(route)\n\n')
+        print('1.Introduce the route in the class --> ex: Variable = library.DataAnalysis(path)\n\n')
         # print('1. Introduce tu ruta en la clase. --> ex:  Variable = libreria.DataAnalisis(ruta)\n\n')
         print('2. Write your data with pandas')
         # print('2. Lee tus datos con pandas')
