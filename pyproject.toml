@@ -4,14 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "libreriaclases"
-version = "3.1"
+version = "3.8"
 authors = [
     { name="uxueballarin", email="uxue.ballarin@alumni.mondragon.edu" },
 ]
 description = "Libreria preproceso"
 readme = "README.md"
 license = { file="LICENSE" }
-requires-python = ">=3.9"
+requires-python = ">=4.0"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",

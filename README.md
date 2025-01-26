@@ -18,7 +18,7 @@ These are the steps you need to follow to clean your dataset:
 2. Read your data with pandas:
 - CSV: use the function Variable.csv().
 - Excel: usa the function Variable.excel().
-3. Start cleaning your dataset using Variable.analyse().
+3. Start cleaning your dataset using Variable.analyze().
 4. Visualize the dataframe using the function Variable.visualize()
 5. Save the dataframe using Variable.save()
 
@@ -28,7 +28,9 @@ Extra:
 These analysis criteria can be changed:
 - variable 1 = Percentage of empty data to recommend deleting the column (0.3 by default) 
 - variable 2 = Normal distribution displacement to assume skewed distribution (0.05 by default)
-To do so, create a file named 'values.txt' with the values separated with commas and without any space. Example: '0.3,0.05'
+To do so, create a file named 'values.txt' with the values separated with commas and without any space. Example: "0.3,0.05"
+
+The separation character for the csv can be changed by introducing a diferent character in the function, which by default is the comma.
 
 ## Code example:
 
@@ -36,6 +38,6 @@ import libreriaclases as lb
 
 Data1=lb.DataAnalysis('example.csv')
 
-Data1.csv()
+Data1.csv(sep = ',')
 
-Data1.analyse()
+Data1.analyze()

@@ -6,7 +6,7 @@ import time
 from IPython.display import display
 
 class DataAnalysis():
-    def __init__(self, ruta):
+    def __init__(self, ruta, sep=','):
         self.ruta = ruta
         self.media = []
         self.mediana = []
@@ -16,6 +16,7 @@ class DataAnalysis():
         self.dataset=0
         self.var1=0.3
         self.var2=0.05
+        self.sep=sep
     def info():
         print('This are the steps to be followed to do the datasets cleaning\n\n')
         # print('Estos son tus pasos a seguir para hacer tu limpieza de dataset:\n\n')
@@ -29,7 +30,7 @@ class DataAnalysis():
         # print('   - CSV: usa la función Variable.csv()')
         # print('   - Excel: usa la función Variable.excel()\n')
         time.sleep(2)
-        print('3. Start the cleaning of the dataset using the method Variable.analyse()\n')
+        print('3. Start the cleaning of the dataset using the method Variable.analyze()\n')
         # print('3. Inicia la limpieza del dataset usando el método Variable.analizar()\n')
         time.sleep(1)
         # print('4. Para visualizar el dataframe usa la funcion Variable.visualizar()\n')
@@ -137,7 +138,7 @@ class DataAnalysis():
 
     def csv(self):
         try:
-            self.dataset = pd.read_csv(self.ruta)
+            self.dataset = pd.read_csv(self.ruta, sep=self.sep)
             print('The file has loaded correctly.')
             # print("El archivo se ha cargado correctamente.")
         except FileNotFoundError:
